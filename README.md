@@ -6,5 +6,5 @@ Repozytorium dla projektu realizowanego na przedmiocie Programowanie Współbie�
 
 | Name Surname (initials) | GUID                                     |
 | ----------------------- | ---------------------------------------- |
-| AB                      | `{FD9D086C-532F-4AAC-BB99-69D7798837D8}` |
-| Jan Kowalski            | `{44FBFCF5-4430-4964-878D-1867DC679E0D}` |
+| Francisek Pawlak        | `{DFF0A286-5FB5-431E-AAE0-308E01444ADD}`|
+| Kacper Białek           | `{7B7E3B4F-B01C-4FC0-AD53-20BE3AD4FE13}` |
