@@ -36,12 +36,13 @@ namespace Bilard.Tests
             LogicAbstractAPI api = LogicAbstractAPI.CreateAPI();
             api.AddBall();
             Assert.AreEqual(api.GetBalls().Count, 1);
-            double[] position = new double[2];
+            double[] position = new double[4];
             position[0] = api.GetBalls()[0].X;
             position[1] = api.GetBalls()[0].Y;
             api.MoveBalls();
-            Assert.AreNotEqual(position[0], api.GetBalls()[0].X);
-            Assert.AreNotEqual(position[1], api.GetBalls()[0].Y);
+            position[2] = api.GetBalls()[0].X;
+            position[3] = api.GetBalls()[0].Y;
+            Assert.AreNotEqual(position[0] * position[1], position[2] * position[3]);
         }
     }
 }

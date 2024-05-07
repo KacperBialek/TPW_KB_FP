@@ -5,7 +5,6 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Bilard.Data;
 using Bilard.Logic;
 
 namespace Bilard.Model

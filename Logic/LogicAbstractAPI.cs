@@ -64,7 +64,7 @@ namespace Bilard.Logic
                 randomSpeedx = random.Next(-5,5);
                 randomSpeedy = random.Next(-5,5);
             } while (randomSpeedx ==  0 && randomSpeedy == 0);
-            balls.Add(new Ball(random.Next(10, 490), random.Next(10, 490), 20, randomSpeedx, randomSpeedy));
+            balls.Add(new Ball(random.Next(10, 470), random.Next(10, 470), 20, randomSpeedx, randomSpeedy));
         }
 
         public override void RemoveBall()
