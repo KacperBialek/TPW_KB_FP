@@ -6,17 +6,17 @@
         xmlns:vm="clr-namespace:Bilard.ViewModel;assembly=ViewModel"
          d:DataContext="{d:DesignInstance Type=vm:GUIController, IsDesignTimeCreatable=True}"
         mc:Ignorable="d"
-        Title="Bilard" Height="700" Width="600">
-    <Grid Height="600" Width="500">
+        Title="Bilard" Height="650" Width="850">
+    <Grid Height="600" Width="800">
         <Grid.RowDefinitions>
             <RowDefinition Height="500" />
             <RowDefinition Height="100" />
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Width="500" Background="#E07819">
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Width="800" Background="#E07819">
             <Button Content="Dodaj bilę" Height="30" Width="80" Background="#803809" Foreground="#FFFFFF" Margin="10,10,10,10" Command="{Binding add}" IsEnabled="{Binding IsAddEnable}" />
             <Button Content="Usuń bilę" Height="30" Width="80" Background="#803809" Foreground="#FFFFFF" Margin="10,10,10,10" Command="{Binding del}" IsEnabled="{Binding IsDelEnable}" />
         </StackPanel>
-        <Grid Grid.Row="0" Width="500" Background="Green">
+        <Grid Grid.Row="0" Width="800" Background="Green">
             <ItemsControl ItemsSource="{Binding ballsOnBoard}">
                 <ItemsControl.ItemsPanel> <!-- Ustawia layout -->
                     <ItemsPanelTemplate>
@@ -25,13 +25,13 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Ellipse Width="{Binding Diameter}" Height="{Binding Diameter}" Fill="blue" />
+                        <Ellipse Width="{Binding Diameter}" Height="{Binding Diameter}" Fill="{Binding Color}" />
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
                 <ItemsControl.ItemContainerStyle> 
                     <Style>
-                        <Setter Property="Canvas.Top" Value="{Binding X}" />
-                        <Setter Property="Canvas.Left" Value="{Binding Y}" />
+                        <Setter Property="Canvas.Top" Value="{Binding Y}" />
+                        <Setter Property="Canvas.Left" Value="{Binding X}" />
                     </Style>
                 </ItemsControl.ItemContainerStyle>
             </ItemsControl>

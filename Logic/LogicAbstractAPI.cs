@@ -26,7 +26,9 @@ namespace Bilard.Logic
     {
         private List<Ball> balls;
 
-        public int size { get; set; } = 500;
+        public int sizeX { get; set; } = 800;
+
+        public int sizeY { get; set; } = 500;
 
         private Random random = new Random();
 
@@ -44,11 +46,11 @@ namespace Bilard.Logic
             {
                 ball.X += ball.XSpeed;
                 ball.Y += ball.YSpeed;
-                if (ball.X < 0 || ball.X + ball.Diameter > size)
+                if (ball.X < 0 || ball.X + ball.Diameter > sizeX)
                 {
                     ball.XSpeed *= -1;
                 }
-                if (ball.Y < 0 || ball.Y + ball.Diameter > size)
+                if (ball.Y < 0 || ball.Y + ball.Diameter > sizeY)
                 {
                     ball.YSpeed *= -1;
                 }
@@ -64,7 +66,7 @@ namespace Bilard.Logic
                 randomSpeedx = random.Next(-5,5);
                 randomSpeedy = random.Next(-5,5);
             } while (randomSpeedx ==  0 && randomSpeedy == 0);
-            balls.Add(new Ball(random.Next(10, 470), random.Next(10, 470), 20, randomSpeedx, randomSpeedy));
+            balls.Add(new Ball(random.Next(10, 770), random.Next(10, 470), 20, randomSpeedx, randomSpeedy));
         }
 
         public override void RemoveBall()

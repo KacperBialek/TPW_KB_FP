@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Effects;
 using Bilard.Logic;
 
 namespace Bilard.Model
@@ -14,6 +15,8 @@ namespace Bilard.Model
         double X { get; }
         double Y { get; }
         double Diameter { get; }
+
+        string Color { get; }
     }
 
     public abstract class ModelAbstractAPI
@@ -42,6 +45,8 @@ namespace Bilard.Model
 
         private Timer timer;
 
+        private Random random = new Random();
+
         public ModelAPI()
         {
             ModelBalls = new ObservableCollection<ModelBall>();
@@ -50,7 +55,20 @@ namespace Bilard.Model
 
         public override void AddModelBall()
         {
-            ModelBalls.Add(new ModelBall(logicAPI.GetBalls()[0].X, logicAPI.GetBalls()[0].Y, logicAPI.GetBalls()[0].Diameter));
+            int int_color = random.Next(1, 6);
+            string color = "";
+            if (int_color == 1) {
+                color = "blue";
+            } else if (int_color == 2){
+                color = "yellow";
+            } else if (int_color == 3){
+                color = "red";
+            } else if (int_color == 4){
+                color = "orange";
+            }else if (int_color == 5){
+                color = "white";
+            }
+            ModelBalls.Add(new ModelBall(logicAPI.GetBalls()[0].X, logicAPI.GetBalls()[0].Y, logicAPI.GetBalls()[0].Diameter, color));
         }
 
         public override void RemoveModelBall()

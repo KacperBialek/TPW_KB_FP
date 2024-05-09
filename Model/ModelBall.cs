@@ -13,6 +13,7 @@ namespace Bilard.Model
         private double x;
         private double y;
         private double diameter;
+        private string color;
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -44,12 +45,18 @@ namespace Bilard.Model
         { 
             get { return diameter; } 
         }
-        
-        public ModelBall(double x, double y, double diameter)
+
+        public string Color
+        {
+            get { return color; }
+        }
+
+        public ModelBall(double x, double y, double diameter, string color)
         {
             this.x = x;
             this.y = y;
             this.diameter = diameter;
+            this.color = color;
         }
     }
 }
