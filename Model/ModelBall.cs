@@ -10,9 +10,9 @@ namespace Bilard.Model
 {
     public class ModelBall : IBall
     {
-        private double x;
-        private double y;
-        private double diameter;
+        private float x;
+        private float y;
+        private int diameter;
         private string color;
 
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -22,7 +22,7 @@ namespace Bilard.Model
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public double X
+        public float X
         {   
             get { return x; } 
             set { 
@@ -31,7 +31,7 @@ namespace Bilard.Model
             }
         }
 
-        public double Y
+        public float Y
         {
             get { return y; }
             set
@@ -41,7 +41,7 @@ namespace Bilard.Model
             }
         }
 
-        public double Diameter
+        public int Diameter
         { 
             get { return diameter; } 
         }
@@ -51,7 +51,7 @@ namespace Bilard.Model
             get { return color; }
         }
 
-        public ModelBall(double x, double y, double diameter, string color)
+        public ModelBall(float x, float y, int diameter, string color)
         {
             this.x = x;
             this.y = y;

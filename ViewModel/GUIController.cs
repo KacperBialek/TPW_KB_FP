@@ -31,8 +31,6 @@ namespace Bilard.ViewModel
 
             modelAPI = ModelAbstractAPI.CreateApi();
 
-            modelAPI.Start();
-
             ballsOnBoard = modelAPI.ModelBalls;
         }
 
@@ -49,8 +47,9 @@ namespace Bilard.ViewModel
 
         public void DelFromBoard(){
             
-            modelAPI.RemoveBall();
+            
             modelAPI.RemoveModelBall();
+            modelAPI.RemoveBall();
 
             if (ballsOnBoard.Count == 0){
                 isDelEnable = false;

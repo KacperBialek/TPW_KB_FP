@@ -12,9 +12,9 @@ namespace Bilard.Model
 {
     public interface IBall : INotifyPropertyChanged
     {
-        double X { get; }
-        double Y { get; }
-        double Diameter { get; }
+        float X { get; }
+        float Y { get; }
+        int Diameter { get; }
 
         string Color { get; }
     }
@@ -31,8 +31,6 @@ namespace Bilard.Model
 
         public abstract void RemoveBall();
 
-        public abstract void Start();
-
         public static ModelAbstractAPI CreateApi()
         {
             return new ModelAPI();
@@ -43,14 +41,13 @@ namespace Bilard.Model
     {
         private LogicAbstractAPI logicAPI;
 
-        private Timer timer;
-
         private Random random = new Random();
 
         public ModelAPI()
         {
             ModelBalls = new ObservableCollection<ModelBall>();
             logicAPI = LogicAbstractAPI.CreateAPI();
+            logicAPI.LogicEvent += Move;
         }
 
         public override void AddModelBall()
@@ -68,7 +65,8 @@ namespace Bilard.Model
             }else if (int_color == 5){
                 color = "white";
             }
-            ModelBalls.Add(new ModelBall(logicAPI.GetBalls()[0].X, logicAPI.GetBalls()[0].Y, logicAPI.GetBalls()[0].Diameter, color));
+            int id_ball = logicAPI.GetBalls().Count;
+            ModelBalls.Add(new ModelBall(logicAPI.GetBalls()[id_ball - 1].X, logicAPI.GetBalls()[id_ball - 1].Y, logicAPI.GetBalls()[id_ball - 1].Diameter, color));
         }
 
         public override void RemoveModelBall()
@@ -76,19 +74,10 @@ namespace Bilard.Model
             ModelBalls.RemoveAt(ModelBalls.Count - 1);
         }
 
-        public override void Start()
+        private void Move(object? sender, (int Id, float X, float Y) args)
         {
-            timer = new Timer(Move, null, TimeSpan.Zero, TimeSpan.FromMilliseconds(10));
-        }
-
-        public void Move(object? state)
-        {
-            logicAPI.MoveBalls();
-            for(int i = 0; i < ModelBalls.Count; i++)
-            {
-                ModelBalls[i].X = logicAPI.GetBalls()[i].X;
-                ModelBalls[i].Y = logicAPI.GetBalls()[i].Y;
-            }
+            ModelBalls[args.Id].X = logicAPI.GetBalls()[args.Id].X;
+            ModelBalls[args.Id].Y = logicAPI.GetBalls()[args.Id].Y;
         }
 
         public override void AddBall()
