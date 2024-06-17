@@ -59,6 +59,7 @@ namespace Bilard.Logic
         public override void RemoveBall() 
         {
             GetBalls().Last().BallChanged -= PositionChanged;
+            dataAPI.unPlug(GetBalls().Last());
             GetBalls().Last().Dispose();
             balls.Remove(GetBalls().Last());
         }

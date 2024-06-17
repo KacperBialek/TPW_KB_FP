@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Bilard.Data
 {
+    [Serializable]
     public class Ball : IDisposable
     {
         private Task task;
